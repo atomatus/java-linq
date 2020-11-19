@@ -1,0 +1,53 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group 'com.atomatus'
+version '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+compileJava {
+    options.compilerArgs << '-Xlint:unchecked'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://maven.pkg.github.com/atomatus/java-util"
+        credentials {
+            username = System.getenv("USERNAME") ?: System.getenv("GITHUB_ACTOR")
+            password = System.getenv("TOKEN") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
+
+publishing {
+    publications {
+        //noinspection GroovyAssignabilityCheck
+        maven(MavenPublication) {
+            //noinspection GroovyAssignabilityCheck
+            from(components.java)
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/atomatus/java-linq")
+            credentials {
+                username = System.getenv("USERNAME") ?: System.getenv("GITHUB_ACTOR")
+                password = System.getenv("TOKEN") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.atomatus:java-util:1.0.6'
+}

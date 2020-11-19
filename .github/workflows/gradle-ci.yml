@@ -29,7 +29,10 @@ jobs:
     - name: Build with Gradle
       if: ${{ always() }}
       run: ./gradlew build
-      
+      env:
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+
     - name: Getting current version with Gradle
       id: step_curr_ver
       if: ${{ success() }}

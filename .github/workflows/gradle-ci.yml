@@ -1,0 +1,96 @@
+# This workflow execute a sequence of jobs to build (tdd), create a release and publish a new package version.
+# All command sequence will run on linux bash, to analyze gradle properties and request gradle publish command.
+# For request latest released version, will get from github API REST.
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: 00 - Java CI with Gradle For Build Release and Publish
+
+on:  
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  
+jobs:
+  job_build:
+    runs-on: ubuntu-latest       
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+   
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build with Gradle
+      if: ${{ always() }}
+      run: ./gradlew build
+      
+    - name: Getting current version with Gradle
+      id: step_curr_ver
+      if: ${{ success() }}
+      run: |
+        CURRENT_VERSION=$(./gradlew properties --no-daemon --console=plain -q | grep -oP '(?<=version:\s).*')
+        CURRENT_VERSION_INT="${CURRENT_VERSION//[^0-9]/}"
+        echo "Current Version ${CURRENT_VERSION}"
+        echo ::set-output name=CURRENT_VERSION::${CURRENT_VERSION:-NotFound} 
+        echo ::set-output name=CURRENT_VERSION_INT::${CURRENT_VERSION_INT:-0}
+      
+    - name: Recovering latest version released
+      id: step_lat_ver
+      if: ${{ success() }}
+      run: |
+        LATEST_VERSION=$(curl -u my_client_id:$TOKEN --silent https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | grep -oP '(?<="tag_name":\s").*?(?=")')
+        LATEST_VERSION_INT="${LATEST_VERSION//[^0-9]/}"
+        echo "Latest Version Released ${LATEST_VERSION}"
+        echo ::set-output name=LATEST_VERSION::${LATEST_VERSION:-NotFound}
+        echo ::set-output name=LATEST_VERSION_INT::${LATEST_VERSION_INT:-0}
+      env:
+        TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token       
+    
+    - name: Comparing Versions
+      if: ${{ success() }}
+      run: |    
+        if [ ${{ steps.step_curr_ver.outputs.CURRENT_VERSION_INT }} -gt ${{ steps.step_lat_ver.outputs.LATEST_VERSION_INT }} ]; then 
+          echo "Current version (${{ steps.step_curr_ver.outputs.CURRENT_VERSION }}) is greater than latest released version (${{ steps.step_lat_ver.outputs.LATEST_VERSION }})";
+        else
+          echo "Current version (${{ steps.step_curr_ver.outputs.CURRENT_VERSION }}) is not greater than latest released version (${{ steps.step_lat_ver.outputs.LATEST_VERSION }}). Publish operation aborted!";
+        fi;
+
+    - name: Get file changes
+      if: ${{ success() && (steps.step_curr_ver.outputs.CURRENT_VERSION_INT > steps.step_lat_ver.outputs.LATEST_VERSION_INT) }}      
+      id: step_file_changes
+      uses: dorner/file-changes-action@v1.2.0
+      with:
+        githubToken: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token       
+        plaintext: true
+
+    - name: Echo file changes
+      if: ${{ success() }}
+      run: |
+        echo Changed files: ${{ steps.step_file_changes.outputs.files }}
+
+    - name: Create Release      
+      if: ${{ success() && (steps.step_curr_ver.outputs.CURRENT_VERSION_INT > steps.step_lat_ver.outputs.LATEST_VERSION_INT) }}
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.step_curr_ver.outputs.CURRENT_VERSION }} # ${{ github.ref }}
+        release_name: Release ${{ steps.step_curr_ver.outputs.CURRENT_VERSION }}
+        body: |
+          Changes in this Release
+          ${{ steps.step_file_changes.outputs.files }}
+        draft: ${{ steps.step_curr_ver.outputs.CURRENT_VERSION_INT < 10 }}
+        prerelease: ${{ steps.step_curr_ver.outputs.CURRENT_VERSION_INT < 10 || steps.step_lat_ver.outputs.LATEST_VERSION_INT < 1 }}
+          
+    - name: Publish with Gradle
+      if: ${{ success() && (steps.step_curr_ver.outputs.CURRENT_VERSION_INT > steps.step_lat_ver.outputs.LATEST_VERSION_INT) }}
+      run: ./gradlew publish
+      env:
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token       

@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * <p>
  * Helper for query actions (from any iterable, set or array) to
- * manipulate, filter, find, group elements on set or array fastestway for reducing code.
+ * manipulate, filter, find, group elements on set or array fastest way for reducing code.
  * </p>
  * <p>
  * Every query action result generate an {@link IterableResult}, {@link IteratorForGroup} or {@link IteratorForMap},
@@ -17,6 +17,7 @@ import java.util.*;
  *
  * @author Carlos Matos
  */
+@SuppressWarnings("SpellCheckingInspection")
 public final class CollectionHelper {
 
     private CollectionHelper() {
@@ -113,7 +114,7 @@ public final class CollectionHelper {
     //region toArray
 
     /**
-     * Create a new object array from current object (current object referecing a array).
+     * Create a new object array from current object (current object referencing a array).
      *
      * @param arr target object.
      * @return object array.
@@ -123,7 +124,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Create a new object array from current object (current object referecing a array).
+     * Create a new object array from current object (current object referencing a array).
      *
      * @param arr       target object.
      * @param clazzType array class type.
@@ -339,7 +340,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Generate an array with result of mounFun execution for each index.
+     * Generate an array with result of mountFun execution for each index.
      * @param count array size
      * @param seed input function seed.
      * @param mountFun function to generate element for each index.
@@ -352,7 +353,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Generate an array with result of mounFun execution for each index.
+     * Generate an array with result of mountFun execution for each index.
      * @param count array size
      * @param mountFun function to generate element for each index.
      * @param <E> element type
@@ -363,7 +364,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Generate an array with result of mounFun execution for each index.
+     * Generate an array with result of mountFun execution for each index.
      * @param count array size
      * @param mountFun function to generate element for each index.
      * @param <E> element type
@@ -485,16 +486,16 @@ public final class CollectionHelper {
     //region filterAsIterable
 
     /**
-     * Build an interable from any collection, filtering values and accepting only who is valid for classType and
+     * Build an iterable from any collection, filtering values and accepting only who is valid for classType and
      * recovering from a iterable mode.
      *
-     * @param classType                   dessired class type.
+     * @param classType                   desired class type.
      * @param getCollection               target collection.
      * @param checkEntryValidForClassType check if current entry is valid for classType.
      * @param mountElementFun             mount a element from current entry.
-     * @param <I>                         current entry type, same type (or herintenced type) for collection S.
+     * @param <I>                         current entry type, same type (or heritage type) for collection S.
      * @param <E>                         mounted element from entry type.
-     * @param <C>                         dessired class type.
+     * @param <C>                         desired class type.
      * @param <S>                         collection.
      * @return return a iterable of filtered element (E) of collection (S) within entries (I) valid for ClassType (C).
      */
@@ -509,16 +510,16 @@ public final class CollectionHelper {
     }
 
     /**
-     * Build an interable from any collection, filtering values and accepting only who is valid for classType and
+     * Build an iterable from any collection, filtering values and accepting only who is valid for classType and
      * recovering from a iterable mode.
      *
-     * @param classType                   dessired class type.
+     * @param classType                   desired class type.
      * @param set                         target collection.
      * @param checkEntryValidForClassType check if current entry is valid for classType.
      * @param mountElementFun             mount a element from current entry.
-     * @param <I>                         current entry type, same type (or herintenced type) for collection S.
+     * @param <I>                         current entry type, same type (or heritage type) for collection S.
      * @param <E>                         mounted element from entry type.
-     * @param <C>                         dessired class type.
+     * @param <C>                         desired class type.
      * @return return a iterable of filtered element (E) of collection within entries (I) valid for ClassType (C).
      */
     public static <I, E, C> IterableResult<E> filterAsIterable(Class<C> classType,
@@ -530,7 +531,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Build an interable from any collection, filtering values and accepting only who is valid for function validate entry and
+     * Build an iterable from any collection, filtering values and accepting only who is valid for function validate entry and
      * recovering from a iterable mode.
      *
      * @param set               target collection.
@@ -548,7 +549,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Build an interable from any collection, filtering values and accepting only who is valid for function validate entry and
+     * Build an iterable from any collection, filtering values and accepting only who is valid for function validate entry and
      * recovering from a iterable mode.
      *
      * @param set               target collection.
@@ -574,7 +575,7 @@ public final class CollectionHelper {
      *
      * @param list      list of elements are super then target classType.
      * @param classType super class type
-     * @param <I>       element type (herintence from super class type)
+     * @param <I>       element type (heritage from super class type)
      * @return new list with elements are instanceof classType
      */
     public static <I> List<I> filterAsListS(List<? super I> list, Class<I> classType) {
@@ -586,7 +587,7 @@ public final class CollectionHelper {
      *
      * @param list      list of elements are extends then target classType.
      * @param classType extended class type
-     * @param <I>       element type (herintence from extend class type)
+     * @param <I>       element type (heritage from extend class type)
      * @return new list with elements are instanceof classType
      */
     public static <I> List<I> filterAsListE(List<? extends I> list, Class<I> classType) {
@@ -611,7 +612,7 @@ public final class CollectionHelper {
      *
      * @param col       list of elements are super then target classType.
      * @param classType super class type
-     * @param <I>       element type (herintence from super class type)
+     * @param <I>       element type (heritage from super class type)
      * @return new list with elements are instanceof classType
      */
     public static <I> Collection<I> filterAsCollectionS(Collection<? super I> col, Class<I> classType) {
@@ -623,7 +624,7 @@ public final class CollectionHelper {
      *
      * @param col       list of elements are extends then target classType.
      * @param classType extended class type
-     * @param <I>       element type (herintence from extend class type)
+     * @param <I>       element type (heritage from extend class type)
      * @return new list with elements are instanceof classType
      */
     public static <I> Collection<I> filterAsCollectionE(Collection<? extends I> col, Class<I> classType) {
@@ -648,7 +649,7 @@ public final class CollectionHelper {
      *
      * @param set       set of elements are super then target classType.
      * @param classType super class type
-     * @param <I>       element type (herintence from super class type)
+     * @param <I>       element type (heritage from super class type)
      * @return new set with elements are instanceof classType
      */
     public static <I> Set<I> filterAsSetS(Set<? super I> set, Class<I> classType) {
@@ -660,7 +661,7 @@ public final class CollectionHelper {
      *
      * @param set       set of elements are extends then target classType.
      * @param classType extended class type
-     * @param <I>       element type (herintence from extend class type)
+     * @param <I>       element type (heritage from extend class type)
      * @return new set with elements are instanceof classType
      */
     public static <I> Set<I> filterAsSetE(Set<? extends I> set, Class<I> classType) {
@@ -747,39 +748,39 @@ public final class CollectionHelper {
     //region groupBy
 
     /**
-     * Generate an iterable result grouping elements by groupfun key result.
+     * Generate an iterable result grouping elements by groupFun key result.
      *
      * @param iterator target.
      * @param groupFun group function to get grouping key.
      * @param <K>      key type
      * @param <V>      value type
-     * @return an instance of toMap whitin set values grouped by key.
+     * @return an instance of toMap within set values grouped by key.
      */
     public static <K, V> IterableResultGroup<K, V> groupBy(Iterator<V> iterator, FunctionMount<V, K> groupFun) {
         return IterableResultFactory.getInstanceForGroup(() -> iterator, groupFun);
     }
 
     /**
-     * Generate an iterable result grouping elements by groupfun key result.
+     * Generate an iterable result grouping elements by groupFun key result.
      *
      * @param col      target.
      * @param groupFun group function to get grouping key.
      * @param <K>      key type
      * @param <V>      value type
-     * @return an instance of toMap whitin set values grouped by key.
+     * @return an instance of toMap within set values grouped by key.
      */
     public static <K, V> IterableResultGroup<K, V> groupBy(Iterable<V> col, FunctionMount<V, K> groupFun) {
         return IterableResultFactory.getInstanceForGroup(col::iterator, groupFun);
     }
 
     /**
-     * Generate an iterable result grouping elements by groupfun key result.
+     * Generate an iterable result grouping elements by groupFun key result.
      *
      * @param arr      target.
      * @param groupFun group function to get grouping key.
      * @param <K>      key type
      * @param <V>      value type
-     * @return an instance of toMap whitin array values grouped by key.
+     * @return an instance of toMap within array values grouped by key.
      */
     public static <K, V> IterableResultGroup<K, V> groupBy(V[] arr, FunctionMount<V, K> groupFun) {
         return IterableResultFactory.getInstanceForGroupArray(arr, groupFun);
@@ -795,7 +796,7 @@ public final class CollectionHelper {
      * @param mount    mount function to get new data
      * @param <IN>     element type
      * @param <OUT>    element mounted from target iterator.
-     * @return new iterable wihitin set of values from mount function.
+     * @return new iterable within set of values from mount function.
      */
     public static <IN, OUT> IterableResult<OUT> select(Iterator<IN> iterator, FunctionMount<IN, OUT> mount) {
         return IterableResultFactory.getInstanceForSelect(() -> iterator, mount);
@@ -808,7 +809,7 @@ public final class CollectionHelper {
      * @param mount mount function to get new data
      * @param <IN>  element type
      * @param <OUT> element mounted from target iterator.
-     * @return new iterable wihitin set of values from mount function.
+     * @return new iterable within set of values from mount function.
      */
     public static <IN, OUT> IterableResult<OUT> select(Iterable<IN> col, FunctionMount<IN, OUT> mount) {
         return IterableResultFactory.getInstanceForSelect(col::iterator, mount);
@@ -821,7 +822,7 @@ public final class CollectionHelper {
      * @param mount mount function to get new data
      * @param <IN>  element type
      * @param <OUT> element mounted from target iterator.
-     * @return new iterable wihitin set of values from mount function.
+     * @return new iterable within set of values from mount function.
      */
     public static <IN, OUT> IterableResult<OUT> select(IN[] arr, FunctionMount<IN, OUT> mount) {
         return IterableResultFactory.getInstanceForSelectArray(arr, mount);
@@ -834,7 +835,7 @@ public final class CollectionHelper {
      * Union of two or more collections.
      *
      * @param curr current iterable base.
-     * @param args one or more iterable whitin compatible elements with current iterable base.
+     * @param args one or more iterable within compatible elements with current iterable base.
      * @param <I>  iterable base type
      * @return new iterable result.
      */
@@ -859,7 +860,7 @@ public final class CollectionHelper {
      * Union of two or more collections.
      *
      * @param arr  current array base.
-     * @param args one or more iterable whitin compatible elements with current array base.
+     * @param args one or more iterable within compatible elements with current array base.
      * @param <I>  iterable base type
      * @return new iterable result.
      */
@@ -884,7 +885,7 @@ public final class CollectionHelper {
      * Union of two or more collections.
      *
      * @param iterable current iterable base.
-     * @param args     one or more arrays whitin compatible elements with current iterable base.
+     * @param args     one or more arrays within compatible elements with current iterable base.
      * @param <I>      iterable base type
      * @return new iterable result.
      */

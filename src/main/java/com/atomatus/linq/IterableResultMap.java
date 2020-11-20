@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Generated result map from collection, set or array interation or filter using {@link CollectionHelper}
+ * Generated result map from collection, set or array iteration or filter using {@link CollectionHelper}
  * or another {@link IterableResult} or {@link IterableResultGroup}.
  *
  * @param <K> iterable element key type

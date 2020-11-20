@@ -22,7 +22,7 @@ final class IteratorForTake<I> implements Iterator<I> {
 
     private void checkInit(){
         if(iterator == null){
-            //creating a new list to avoid concorrence.
+            //creating a new list to avoid concurrence.
             iterator = colFun.get();
         }
     }

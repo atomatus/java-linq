@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Generated result from collection, set or array interation or filter using {@link CollectionHelper}
+ * Generated result from collection, set or array iteration or filter using {@link CollectionHelper}
  * or another {@link IterableResult}.
  *
  * @param <E> iterable element type
@@ -66,11 +66,11 @@ public abstract class IterableResult<E> implements Iterable<E> {
     }
 
     /**
-     * Generate an iterable result grouping elements by groupfun key result.
+     * Generate an iterable result grouping elements by groupFun key result.
      *
      * @param groupFun group function to get grouping key.
      * @param <K>      key type
-     * @return an instance of iterable result group whithin set values grouped by key.
+     * @return an instance of iterable result group within set values grouped by key.
      */
     public <K> IterableResultGroup<K, E> groupBy(CollectionHelper.FunctionMount<E, K> groupFun) {
         return CollectionHelper.groupBy(this, groupFun);
@@ -78,7 +78,7 @@ public abstract class IterableResult<E> implements Iterable<E> {
 
     /**
      * Generate an iterable result grouping elements by equals objects.
-     * @return an instance of iterable result group whithin set values grouped by equals objects.
+     * @return an instance of iterable result group within set values grouped by equals objects.
      */
     public IterableResultGroup<E, E> group() {
         return CollectionHelper.groupBy(this, e -> e);
@@ -89,7 +89,7 @@ public abstract class IterableResult<E> implements Iterable<E> {
      *
      * @param mount mount function to get new data
      * @param <OUT> element mounted from target iterator.
-     * @return new iterable wihitin set of values from mount function.
+     * @return new iterable within set of values from mount function.
      */
     public <OUT> IterableResult<OUT> select(CollectionHelper.FunctionMount<E, OUT> mount) {
         return CollectionHelper.select(this, mount);
@@ -308,7 +308,7 @@ public abstract class IterableResult<E> implements Iterable<E> {
      * How like literally named, "jump" elements on collection
      * returning all others elements after offset count it.
      *
-     * @param count count of elements will be discarted
+     * @param count count of elements will be ignored.
      * @return new iterable result with non elements after offset count.
      */
     public IterableResult<E> jump(int count) {
@@ -319,7 +319,7 @@ public abstract class IterableResult<E> implements Iterable<E> {
      * Take only amount of elements set on count.
      *
      * @param count count of elements
-     * @return new iterable result with taked elements.
+     * @return new iterable result with got elements.
      */
 
     public IterableResult<E> take(int count) {
@@ -385,8 +385,8 @@ public abstract class IterableResult<E> implements Iterable<E> {
     }
 
     /**
-     * Join all values how unique string, wheter value is a collection, set or array bring up theses datas
-     * to same level of current datas and join it, otherwise, set simple objects toString and join it too.
+     * Join all values how unique string, whether value is a collection, set or array bring up theses data
+     * to same level of current data and join it, otherwise, set simple objects toString and join it too.
      * @param separator data separator
      * @return string result
      */
@@ -395,8 +395,8 @@ public abstract class IterableResult<E> implements Iterable<E> {
     }
 
     /**
-     * Join all values how unique string, wheter value is a collection, set or array bring up theses datas
-     * to same level of current datas and join it, otherwise, set simple objects toString and join it too.
+     * Join all values how unique string, whether value is a collection, set or array bring up theses data
+     * to same level of current data and join it, otherwise, set simple objects toString and join it too.
      * @return string result
      */
     public String join() {

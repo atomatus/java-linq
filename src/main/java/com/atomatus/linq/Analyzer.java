@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  * Analyze a spreadsheet file, how like a data table.
- * How like, data frames, to modeling datas and generating results.
+ * How like, data frames, to modeling data and generating results.
  * @author Carlos Matos
  */
 public abstract class Analyzer extends IterableResultGroup<String, String> implements Closeable {

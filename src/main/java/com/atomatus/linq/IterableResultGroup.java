@@ -1,13 +1,14 @@
 package com.atomatus.linq;
 
 /**
- * Generated result group from collection, set or array interation or filter using {@link CollectionHelper}
+ * Generated result group from collection, set or array iteration or filter using {@link CollectionHelper}
  * or another {@link IterableResult}.
  *
  * @param <K> iterable element key type
  * @param <V> iterable element value type
  * @author Carlos Matos
  */
+@SuppressWarnings("SpellCheckingInspection")
 public abstract class IterableResultGroup<K, V> extends IterableResultMap<K, IterableResult<V>> {
 
     interface IteratorGroupCalculator<K, V> {
@@ -188,8 +189,8 @@ public abstract class IterableResultGroup<K, V> extends IterableResultMap<K, Ite
     }
 
     /**
-     * Filter current group to get only dessired sample (key-values).
-     * @param checkFun function to filter and recover only dessired sample.
+     * Filter current group to get only desired sample (key-values).
+     * @param checkFun function to filter and recover only desired sample.
      * @return new group with filtered values.
      */
     public final IterableResultGroup<K, V> sample(CollectionHelper.CompareEntryValid<K> checkFun) {
@@ -197,8 +198,8 @@ public abstract class IterableResultGroup<K, V> extends IterableResultMap<K, Ite
     }
 
     /**
-     * Filter current group to get only dessired sample (key-values).
-     * @param keys key names to filter and recover only dessired sample.
+     * Filter current group to get only desired sample (key-values).
+     * @param keys key names to filter and recover only desired sample.
      * @return new group with filtered values.
      */
     @SafeVarargs

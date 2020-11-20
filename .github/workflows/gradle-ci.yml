@@ -47,7 +47,7 @@ jobs:
       id: step_lat_ver
       if: ${{ success() }}
       run: |
-        LATEST_VERSION=$(curl -u my_client_id:$TOKEN --silent https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | grep -oP '(?<="tag_name":\s").*?(?=")')
+        LATEST_VERSION=$(curl -u my_client_id:$TOKEN --silent https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest | (grep -oP '(?<="tag_name":\s").*?(?=")') || echo '0')
         LATEST_VERSION_INT="${LATEST_VERSION//[^0-9]/}"
         echo "Latest Version Released ${LATEST_VERSION}"
         echo ::set-output name=LATEST_VERSION::${LATEST_VERSION:-NotFound}

@@ -25,7 +25,7 @@ to filter and manipulate like a dictionary.
 ### CollectionHelper
 <p>
 Set of static methods to help for query actions (from any iterable, set or array) to
-manipulate, filter, find, group elements on set or array fastestway for reducing code.
+manipulate, filter, find, group elements on set or array fastest way for reducing code.
 </p>
 <p>
 Every query action result generate an IterableResult, IterableResultGroup or IterableResultMap,
@@ -190,7 +190,7 @@ System.out.println(CollectionHelper.all(arr1, e -> e % 2 == 0));
 ## Analyzer
 <p>
 Last but not least, Analyzer. This class can be used to load spreadsheets files (from local system disk or using https://, http:// or file:// protocol), how like, CSV to 
-analize and manipulate data. Generating IterableResult, IterableResultGroup, IterableResultMap.
+analyze and manipulate data. Generating IterableResult, IterableResultGroup, IterableResultMap.
 </p>
 
 ```

@@ -177,4 +177,40 @@ final class IterableResultFactory {
             }
         };
     }
+
+    static <I> IterableResult<I> getInstanceForSortAsc(CollectionHelper.FunctionGet<Iterator<I>> colFun) {
+        return new IterableResult<I>() {
+            @Override
+            public Iterator<I> iterator() {
+                return new IteratorForSort<>(colFun, IteratorForSort.SortMode.ASC);
+            }
+        };
+    }
+
+    static <I> IterableResult<I> getInstanceForSortAsc(Iterator<I> iterator) {
+        return new IterableResult<I>() {
+            @Override
+            public Iterator<I> iterator() {
+                return new IteratorForSort<>(iterator, IteratorForSort.SortMode.ASC);
+            }
+        };
+    }
+
+    static <I> IterableResult<I> getInstanceForSortDesc(CollectionHelper.FunctionGet<Iterator<I>> colFun) {
+        return new IterableResult<I>() {
+            @Override
+            public Iterator<I> iterator() {
+                return new IteratorForSort<>(colFun, IteratorForSort.SortMode.DESC);
+            }
+        };
+    }
+
+    static <I> IterableResult<I> getInstanceForSortDesc(Iterator<I> iterator) {
+        return new IterableResult<I>() {
+            @Override
+            public Iterator<I> iterator() {
+                return new IteratorForSort<>(iterator, IteratorForSort.SortMode.DESC);
+            }
+        };
+    }
 }

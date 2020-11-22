@@ -99,4 +99,36 @@ public class CollectionHelperTest extends TestCase {
         System.out.printf("\nAverage (all values in arr1): %d\n", i);
         assertEquals(26/5, i.intValue());
     }
+
+    public void testMedian(){
+        Integer i = CollectionHelper.median(arr0);
+        System.out.printf("\nMedian (all values in arr0): %d\n", i);
+        assertEquals(4, i.intValue());
+
+        i = CollectionHelper.median(arr1);
+        System.out.printf("\nMedian (all values in arr1): %d\n", i);
+        assertEquals(5, i.intValue());
+    }
+
+    public void testMode(){
+        Integer i = CollectionHelper.merge(arr0, arr1).mode();
+        System.out.printf("\nMode (from merged arr0 and arr1): %d\n", i);
+        assertEquals(2, i.intValue());
+    }
+
+    public void testAmplitude(){
+        Integer i = CollectionHelper.amplitude(arr0);
+        System.out.printf("\nAmplitude (all values in arr0): %d\n", i);
+        assertEquals(8, i.intValue());
+
+        i = CollectionHelper.amplitude(arr1);
+        System.out.printf("\nAmplitude (all values in arr1): %d\n", i);
+        assertEquals(7, i.intValue());
+    }
+
+    public void testPopulationVariance() {
+        Float pv = CollectionHelper.variance(new Float[]{3.2f, 3.3f, 3.4f, 3.4f, 3.6f, 3.5f, 3.4f});
+        assertEquals(0.014285708f, pv);
+    }
+
 }

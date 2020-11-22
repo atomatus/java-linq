@@ -4,6 +4,8 @@ import com.atomatus.util.DateHelper;
 import com.atomatus.util.DecimalHelper;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -193,6 +195,42 @@ public abstract class IterableResult<E> implements Iterable<E> {
     }
 
     /**
+     * <p>
+     * In relation to a time series, the amplitude of a fluctuation is the value of the ordinate at its peak or
+     * trough taken from some mean value or trend line. Sometimes the difference between values at peak and
+     * trough is referred to as an "amplitude".
+     * </p>
+     * <p>
+     * In Statistics, the total amplitude At of a set of values
+     * is the difference between the highest and lowest value of the sample.
+     * </p>
+     * @param fun   function to get target number
+     * @param <OUT> result number type
+     * @return result number
+     */
+    public <OUT extends Number> OUT amplitude(CollectionHelper.FunctionMount<E, OUT> fun) {
+        return CollectionHelper.amplitude(this, fun);
+    }
+
+    /**
+     * <p>
+     * In relation to a time series, the amplitude of a fluctuation is the value of the ordinate at its peak or
+     * trough taken from some mean value or trend line. Sometimes the difference between values at peak and
+     * trough is referred to as an "amplitude".
+     * </p>
+     * <p>
+     * In Statistics, the total amplitude At of a set of values
+     * is the difference between the highest and lowest value of the sample.
+     * </p>
+     * @param <OUT> result number type
+     * @return result number
+     */
+    @SuppressWarnings("unchecked")
+    public <OUT extends Number> OUT amplitude() {
+        return CollectionHelper.amplitude(this, e -> (OUT) e);
+    }
+
+    /**
      * Average is defined as the sum of all the values divided by the total number of values in a given set.
      *
      * @param fun   function to get target number
@@ -241,6 +279,54 @@ public abstract class IterableResult<E> implements Iterable<E> {
     }
 
     /**
+     * Arrange the data points from smallest to largest.<br/>
+     * <ul>
+     * <li>If the number of data points is odd, the median is the middle data point in the list;</li>
+     * <li>If the number of data points is even, the median is the average of the two middle data points in the list.</li>
+     * </ul>
+     * @param fun   function to get target number
+     * @param <OUT> result number type
+     * @return result number
+     */
+    public <OUT extends Number> OUT median(CollectionHelper.FunctionMount<E, OUT> fun) {
+        return CollectionHelper.median(this, fun);
+    }
+
+    /**
+     * Arrange the data points from smallest to largest.<br/>
+     * <ul>
+     * <li>If the number of data points is odd, the median is the middle data point in the list;</li>
+     * <li>If the number of data points is even, the median is the average of the two middle data points in the list.</li>
+     * </ul>
+     * @param <OUT> result number type
+     * @return result number
+     */
+    @SuppressWarnings("unchecked")
+    public <OUT extends Number> OUT median() {
+        return CollectionHelper.median(this, e -> (OUT) e);
+    }
+
+    /**
+     * In statistics, the mode is the most commonly observed value in a set of data.
+     * @param fun   function to get target number
+     * @param <OUT> result number type
+     * @return result number
+     */
+    public <OUT extends Number> OUT mode(CollectionHelper.FunctionMount<E, OUT> fun) {
+        return CollectionHelper.mode(this, fun);
+    }
+
+    /**
+     * In statistics, the mode is the most commonly observed value in a set of data.
+     * @param <OUT> result number type
+     * @return result number
+     */
+    @SuppressWarnings("unchecked")
+    public <OUT extends Number> OUT mode() {
+        return CollectionHelper.mode(this, e -> (OUT) e);
+    }
+
+    /**
      * Recover minimum value of collection
      *
      * @param fun   function to get Comparable element target
@@ -285,6 +371,50 @@ public abstract class IterableResult<E> implements Iterable<E> {
     }
 
     /**
+     * <h2>Population Variance</h2>
+     * <p>
+     * In statistics, variance measures variability from the average or mean. <br/>
+     * It is calculated by taking the differences between each number in the data
+     * set and the mean, then squaring the differences to make them positive,
+     * and finally dividing the sum of the squares by the number of values in the data set.
+     * </p><br/>
+     * <ul>
+     * <li>A large variance indicates that numbers in the set are far from the mean and far from each other.</li>
+     * <li>A small variance, on the other hand, indicates the opposite.</li>
+     * <li>A variance value of zero, though, indicates that all values within a set of numbers are identical.</li>
+     * </ul>
+     * </p>
+     * @param fun   function to get target number
+     * @param <OUT> result number type
+     * @return population variance result
+     */
+    public <OUT extends Number> OUT variance(CollectionHelper.FunctionMount<E, OUT> fun) {
+        return CollectionHelper.variance(this, fun);
+    }
+
+    /**
+     * <h2>Population Variance</h2>
+     * <p>
+     * In statistics, variance measures variability from the average or mean. <br/>
+     * It is calculated by taking the differences between each number in the data
+     * set and the mean, then squaring the differences to make them positive,
+     * and finally dividing the sum of the squares by the number of values in the data set.
+     * </p><br/>
+     * <ul>
+     * <li>A large variance indicates that numbers in the set are far from the mean and far from each other.</li>
+     * <li>A small variance, on the other hand, indicates the opposite.</li>
+     * <li>A variance value of zero, though, indicates that all values within a set of numbers are identical.</li>
+     * </ul>
+     * </p>
+     * @param <OUT> result number type
+     * @return population variance result
+     */
+    @SuppressWarnings("unchecked")
+    public <OUT extends Number> OUT variance() {
+        return CollectionHelper.variance(this, e -> (OUT) e);
+    }
+
+    /**
      * Recover distinct (non duplicated) element of collection
      *
      * @param mount function to mount output distinct value
@@ -321,9 +451,24 @@ public abstract class IterableResult<E> implements Iterable<E> {
      * @param count count of elements
      * @return new iterable result with got elements.
      */
-
     public IterableResult<E> take(int count) {
         return CollectionHelper.take(this, count);
+    }
+
+    /**
+     * Sort all elements in iterable as ascendant mode (from smallest to biggest).
+     * @return new iterable result sorted.
+     */
+    public IterableResult<E> asc() {
+        return CollectionHelper.asc(this);
+    }
+
+    /**
+     * Sort all elements in iterable as descendant mode (from biggest to smallest).
+     * @return new iterable result sorted.
+     */
+    public IterableResult<E> desc() {
+        return CollectionHelper.desc(this);
     }
 
     /**
@@ -419,6 +564,16 @@ public abstract class IterableResult<E> implements Iterable<E> {
     }
 
     /**
+     * Convert current result values to Short (default value is 0).
+     * @return iterable result for short values.
+     */
+    public IterableResult<Short> asShort() {
+        return asWrapper((short) 0,
+                Number::shortValue,
+                Short::parseShort);
+    }
+
+    /**
      * Convert current result values to Integer (default value is 0).
      * @return iterable result for integer values.
      */
@@ -469,6 +624,30 @@ public abstract class IterableResult<E> implements Iterable<E> {
     }
 
     /**
+     * Convert current result values to BigInteger (default value is BigInteger.Zero).
+     * @return iterable result for BigInteger values.
+     */
+    public IterableResult<BigInteger> asBigInteger() {
+        return asWrapper(BigInteger.ZERO,
+                e -> BigInteger.valueOf(e.longValue()),
+                e -> DecimalHelper.toBigDecimal(e).toBigInteger());
+    }
+
+    /**
+     * Convert current result values to Calendar (default value is null).
+     * @return iterable result for Calendar values.
+     */
+    public IterableResult<Calendar> asCalendar() {
+        return asWrapper(null,
+                n -> {
+                    Calendar c = Calendar.getInstance();
+                    c.setTimeInMillis(n.longValue());
+                    return c;
+                },
+                DateHelper.getInstance()::parseCalendar);
+    }
+
+    /**
      * Convert current result values to Date (default value is null).
      * @return iterable result for Date values.
      */
@@ -476,6 +655,16 @@ public abstract class IterableResult<E> implements Iterable<E> {
         return asWrapper(null,
                 n -> new Date(n.longValue()),
                 DateHelper.getInstance()::parseDate);
+    }
+
+    /**
+     * Convert current result values to String (default value is null).
+     * @return iterable result for String values.
+     */
+    public IterableResult<String> asString() {
+        return asWrapper(null,
+                Number::toString,
+                String::toString);
     }
 
     @Override

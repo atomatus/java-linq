@@ -1013,7 +1013,7 @@ public final class CollectionHelper {
     //region sum
 
     /**
-     * Apply summation operation in a sequence of any kind of number.
+     * Apply summation operation (Σx) in a sequence of any kind of number.
      *
      * @param iterator target
      * @param fun      function to get a target number in element.
@@ -1025,7 +1025,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Apply summation operation in a sequence of any kind of number.
+     * Apply summation operation (Σx) in a sequence of any kind of number.
      *
      * @param col   target
      * @param fun   function to get a target number in element.
@@ -1037,7 +1037,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Apply summation operation in a sequence of any kind of number.
+     * Apply summation operation (Σx) in a sequence of any kind of number.
      *
      * @param arr   target
      * @param fun   function to get a target number in element.
@@ -1050,7 +1050,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Apply summation operation in a sequence of any kind of number.
+     * Apply summation operation (Σx) in a sequence of any kind of number.
      *
      * @param iterator target
      * @return summation result
@@ -1060,7 +1060,7 @@ public final class CollectionHelper {
     }
 
     /**
-     * Apply summation operation in a sequence of any kind of number.
+     * Apply summation operation (Σx) in a sequence of any kind of number.
      *
      * @param col target
      * @return summation result
@@ -1070,13 +1070,136 @@ public final class CollectionHelper {
     }
 
     /**
-     * Apply summation operation in a sequence of any kind of number.
+     * Apply summation operation (Σx) in a sequence of any kind of number.
      *
      * @param arr target
      * @return summation result
      */
     public static <IN extends Number> IN sum(IN[] arr) {
         return IteratorForMath.sum(arr);
+    }
+    //endregion
+
+    //region amplitude
+
+    /**
+     * <p>
+     * In relation to a time series, the amplitude of a fluctuation is the value of the ordinate at its peak or
+     * trough taken from some mean value or trend line. Sometimes the difference between values at peak and
+     * trough is referred to as an "amplitude".
+     * </p>
+     * <p>
+     * In Statistics, the total amplitude At of a set of values
+     * is the difference between the highest and lowest value of the sample, as shown below:
+     * </p>
+     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
+     * @param iterator target
+     * @param fun      function to get target number
+     * @param <IN>     collection element type
+     * @param <OUT>    result number type
+     * @return result number
+     */
+    public static <IN, OUT extends Number> OUT amplitude(Iterator<IN> iterator, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.amplitude(iterator, fun);
+    }
+
+    /**
+     * <p>
+     * In relation to a time series, the amplitude of a fluctuation is the value of the ordinate at its peak or
+     * trough taken from some mean value or trend line. Sometimes the difference between values at peak and
+     * trough is referred to as an "amplitude".
+     * </p>
+     * <p>
+     * In Statistics, the total amplitude At of a set of values
+     * is the difference between the highest and lowest value of the sample, as shown below:
+     * </p>
+     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
+     * @param col   target
+     * @param fun   function to get target number
+     * @param <IN>  collection element type
+     * @param <OUT> result number type
+     * @return result number
+     */
+    public static <IN, OUT extends Number> OUT amplitude(Iterable<IN> col, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.amplitude(col.iterator(), fun);
+    }
+
+    /**
+     * <p>
+     * In relation to a time series, the amplitude of a fluctuation is the value of the ordinate at its peak or
+     * trough taken from some mean value or trend line. Sometimes the difference between values at peak and
+     * trough is referred to as an "amplitude".
+     * </p>
+     * <p>
+     * In Statistics, the total amplitude At of a set of values
+     * is the difference between the highest and lowest value of the sample, as shown below:
+     * </p>
+     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
+     * @param arr   target
+     * @param fun   function to get target number
+     * @param <IN>  collection element type
+     * @param <OUT> result number type
+     * @return result number
+     */
+    public static <IN, OUT extends Number> OUT amplitude(IN[] arr, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.amplitude(arr, fun);
+    }
+
+    /**
+     * <p>
+     * In relation to a time series, the amplitude of a fluctuation is the value of the ordinate at its peak or
+     * trough taken from some mean value or trend line. Sometimes the difference between values at peak and
+     * trough is referred to as an "amplitude".
+     * </p>
+     * <p>
+     * In Statistics, the total amplitude At of a set of values
+     * is the difference between the highest and lowest value of the sample, as shown below:
+     * </p>
+     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
+     * @param iterator target
+     * @param <IN>     collection element number type
+     * @return result number
+     */
+    public static <IN extends Number> IN amplitude(Iterator<IN> iterator) {
+        return IteratorForMath.amplitude(iterator);
+    }
+
+    /**
+     * <p>
+     * In relation to a time series, the amplitude of a fluctuation is the value of the ordinate at its peak or
+     * trough taken from some mean value or trend line. Sometimes the difference between values at peak and
+     * trough is referred to as an "amplitude".
+     * </p>
+     * <p>
+     * In Statistics, the total amplitude At of a set of values
+     * is the difference between the highest and lowest value of the sample, as shown below:
+     * </p>
+     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
+     * @param col  function to get target number
+     * @param <IN> collection element number type
+     * @return result number
+     */
+    public static <IN extends Number> IN amplitude(Iterable<IN> col) {
+        return IteratorForMath.amplitude(col.iterator());
+    }
+
+    /**
+     * <p>
+     * In relation to a time series, the amplitude of a fluctuation is the value of the ordinate at its peak or
+     * trough taken from some mean value or trend line. Sometimes the difference between values at peak and
+     * trough is referred to as an "amplitude".
+     * </p>
+     * <p>
+     * In Statistics, the total amplitude At of a set of values
+     * is the difference between the highest and lowest value of the sample, as shown below:
+     * </p>
+     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
+     * @param arr  target
+     * @param <IN> collection element number type
+     * @return result number
+     */
+    public static <IN extends Number> IN amplitude(IN[] arr) {
+        return IteratorForMath.amplitude(arr);
     }
     //endregion
 
@@ -1179,7 +1302,6 @@ public final class CollectionHelper {
      * In Statistics, the total amplitude At of a set of values
      * is the difference between the highest and lowest value of the sample, as shown below:
      * </p>
-     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
      * @param iterator target
      * @param fun      function to get target number
      * @param <IN>     collection element type
@@ -1200,7 +1322,6 @@ public final class CollectionHelper {
      * In Statistics, the total amplitude At of a set of values
      * is the difference between the highest and lowest value of the sample, as shown below:
      * </p>
-     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
      * @param col   target
      * @param fun   function to get target number
      * @param <IN>  collection element type
@@ -1221,7 +1342,6 @@ public final class CollectionHelper {
      * In Statistics, the total amplitude At of a set of values
      * is the difference between the highest and lowest value of the sample, as shown below:
      * </p>
-     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
      * @param arr   target
      * @param fun   function to get target number
      * @param <IN>  collection element type
@@ -1242,7 +1362,6 @@ public final class CollectionHelper {
      * In Statistics, the total amplitude At of a set of values
      * is the difference between the highest and lowest value of the sample, as shown below:
      * </p>
-     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
      * @param iterator target
      * @param <IN>     collection element number type
      * @return result number
@@ -1261,7 +1380,6 @@ public final class CollectionHelper {
      * In Statistics, the total amplitude At of a set of values
      * is the difference between the highest and lowest value of the sample, as shown below:
      * </p>
-     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
      * @param col  function to get target number
      * @param <IN> collection element number type
      * @return result number
@@ -1280,13 +1398,174 @@ public final class CollectionHelper {
      * In Statistics, the total amplitude At of a set of values
      * is the difference between the highest and lowest value of the sample, as shown below:
      * </p>
-     * <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAwCAYAAAAij0UkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAE1ElEQVR4nO2bL3DiWBzHv725GXCpo+7qwAWXutSlLnUPl3WpAxdkXeqoSx114FJzQ8XNsA5ccoqcShxxYVU49T0B2+W6ty2lsL158z4zzJDkPd6P93l/fgnDEUlCIQW/fHQAiv2hZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZErE7jKTW5xVj3Dame4xnG8skyG6F6c4OjrBRfcByRLIHq5wdtzARecO0/wgzW7PYor7zjlOjo5wenmDx2wVc6txjGari2G8+PkxcScKhqLOWq1CmAHnu33I66QBjYpGMSrXhzbt3uxQre1ARK8O/taekCTLyKclBofrj1fYTebMp2H4DH2dqDkc7zemDVIGRoWaGLH44I76EZFXJ35rc1KM2bZcjoqPi2UHmQVDodMZlSxHDjUY7KWvVCnH9CyTpvn9y/InL1ZNA4MVTafxwR31QyKPddSoGxa9SfmhobxdZuTTMHtMSTLt0cC3ZfAgpD0aqNDs/9/m5FdWS60mQn6sSvLXt+2wCwyvh2heT3EKAKdNNGtfMI0z4KKx/w0dQPb4Gbn2NxaPUyw/XaJ6kFaA5K6FzjDH8vmFahOd+1tcnvx3vWX8iOlCw5fPj4hxibMDxbcVb1IfedRrOi3bpm3btG2LugZW7MHLo3LHZbaMfFrOgFFgsqIJhm8a+nOGrqA3OuCMLsZsW22OJj511Oi+vGNsVuTIE2yH6V7DeYPMOQe2zvazfWHi1oi6x2h9nPY9BukeIttMKOYBzYpG8Rab5ZzpQffYOUPHoheVJGf0dbDmjresW3B+gNi2lllO2jTEgM9jKPomUbHYL0jOQ4q6QTcYrfbUnVl31NPAmTMwK9TscN1+yr5dpyFcCkunIXz2PIembrOfkmTEoO2z5wmK3ozlbEBRN+hHKUPXYRC9vyef3ybN/DpRc9eZfclZz2TddOgKk7rp0vfbFIZOJyxYpgMK3eX4aznLZdsxqdv9d/XbVjKLSUCh16g7A842J8d8zMDRWYFGwx1wVo7omD7fcydYRgN6QqdWt+mPUpJkOurRMTSiolP4q4ESeSbdMckypLBW97ppz6IISbJgUZAsB7StPguSRShoCo+99y67xYR9z2Zd0+kEE85JlrOQvqiv+sEJOJ6THLs0/RnJOfuWzUFJMvJotSckZ/TNtfixS2tdLrDeupX8m60SoOOzKwzjq+8vnJzj6j7G1f36OL9DftJYJUc7Um22cDNs4Wbj3OlFB/cXHdxvnIufKlRRxRLL1dsVywyPwylQjZGvU5Ljyw6a3S7Q+EEmsy3HZ/h084BPmwE2LtEdXqI73DiXPAWIp6ytegx8n2I9lau+cHUb9vtsNomBZuNgGee2LIbXGFZbaLXOnwZW/hDj/OYMD90HfMCDtp/CfmUen2L5eIv7gz+XzJFkObI4QRbHyPIYcZYhjnPkSYJqo4HF3RW6d5+R51P88fstrqcNnF+0cJZ00Rlm75oBr7NElmTI4xhZFiPOckzjDEkcI08S/PXnFHGeYBrn63LJ6jvkGbJk98iOSPVfE1lQP4FJhJIpEUqmRCiZEqFkSoSSKRFKpkQomRKhZEqEkikRSqZEKJkSoWRKhJIpEUqmRCiZEqFkSoSSKRFKpkT8A7YI56A7YlkCAAAAAElFTkSuQmCC"/>
      * @param arr  target
      * @param <IN> collection element number type
      * @return result number
      */
     public static <IN extends Number> IN mean(IN[] arr) {
         return IteratorForMath.mean(arr);
+    }
+    //endregion
+
+    //region median
+
+    /**
+     * Arrange the data points from smallest to largest.<br/>
+     * <ul>
+     * <li>If the number of data points is odd, the median is the middle data point in the list;</li>
+     * <li>If the number of data points is even, the median is the average of the two middle data points in the list.</li>
+     * </ul>
+     * @param iterator target
+     * @param fun      function to get target number
+     * @param <IN>     collection element type
+     * @param <OUT>    result number type
+     * @return result number
+     */
+    public static <IN, OUT extends Number> OUT median(Iterator<IN> iterator, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.median(iterator, fun);
+    }
+
+    /**
+     * Arrange the data points from smallest to largest.<br/>
+     * <ul>
+     * <li>If the number of data points is odd, the median is the middle data point in the list;</li>
+     * <li>If the number of data points is even, the median is the average of the two middle data points in the list.</li>
+     * </ul>
+     * @param col   target
+     * @param fun   function to get target number
+     * @param <IN>  collection element type
+     * @param <OUT> result number type
+     * @return result number
+     */
+    public static <IN, OUT extends Number> OUT median(Iterable<IN> col, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.median(col.iterator(), fun);
+    }
+
+    /**
+     * Arrange the data points from smallest to largest.<br/>
+     * <ul>
+     * <li>If the number of data points is odd, the median is the middle data point in the list;</li>
+     * <li>If the number of data points is even, the median is the average of the two middle data points in the list.</li>
+     * </ul>
+     * @param arr   target
+     * @param fun   function to get target number
+     * @param <IN>  collection element type
+     * @param <OUT> result number type
+     * @return result number
+     */
+    public static <IN, OUT extends Number> OUT median(IN[] arr, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.median(arr, fun);
+    }
+
+    /**
+     * Arrange the data points from smallest to largest.<br/>
+     * <ul>
+     * <li>If the number of data points is odd, the median is the middle data point in the list;</li>
+     * <li>If the number of data points is even, the median is the average of the two middle data points in the list.</li>
+     * </ul>
+     * @param iterator target
+     * @param <IN>     collection element number type
+     * @return result number
+     */
+    public static <IN extends Number> IN median(Iterator<IN> iterator) {
+        return IteratorForMath.median(iterator);
+    }
+
+    /**
+     * Arrange the data points from smallest to largest.<br/>
+     * <ul>
+     * <li>If the number of data points is odd, the median is the middle data point in the list;</li>
+     * <li>If the number of data points is even, the median is the average of the two middle data points in the list.</li>
+     * </ul>
+     * @param col  function to get target number
+     * @param <IN> collection element number type
+     * @return result number
+     */
+    public static <IN extends Number> IN median(Iterable<IN> col) {
+        return IteratorForMath.median(col.iterator());
+    }
+
+    /**
+     * Arrange the data points from smallest to largest.<br/>
+     * <ul>
+     * <li>If the number of data points is odd, the median is the middle data point in the list;</li>
+     * <li>If the number of data points is even, the median is the average of the two middle data points in the list.</li>
+     * </ul>
+     * @param arr  target
+     * @param <IN> collection element number type
+     * @return result number
+     */
+    public static <IN extends Number> IN median(IN[] arr) {
+        return IteratorForMath.median(arr);
+    }
+    //endregion
+
+    //region mode
+
+    /**
+     * In statistics, the mode is the most commonly observed value in a set of data.
+     * @param iterator target
+     * @param fun      function to get target number
+     * @param <IN>     collection element type
+     * @param <OUT>    result number type
+     * @return result number
+     */
+    public static <IN, OUT extends Number> OUT mode(Iterator<IN> iterator, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.mode(iterator, fun);
+    }
+
+    /**
+     * In statistics, the mode is the most commonly observed value in a set of data.
+     * @param col   target
+     * @param fun   function to get target number
+     * @param <IN>  collection element type
+     * @param <OUT> result number type
+     * @return result number
+     */
+    public static <IN, OUT extends Number> OUT mode(Iterable<IN> col, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.mode(col.iterator(), fun);
+    }
+
+    /**
+     * In statistics, the mode is the most commonly observed value in a set of data.
+     * @param arr   target
+     * @param fun   function to get target number
+     * @param <IN>  collection element type
+     * @param <OUT> result number type
+     * @return result number
+     */
+    public static <IN, OUT extends Number> OUT mode(IN[] arr, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.mode(arr, fun);
+    }
+
+    /**
+     * In statistics, the mode is the most commonly observed value in a set of data.
+     * @param iterator target
+     * @param <IN>     collection element number type
+     * @return result number
+     */
+    public static <IN extends Number> IN mode(Iterator<IN> iterator) {
+        return IteratorForMath.mode(iterator);
+    }
+
+    /**
+     * In statistics, the mode is the most commonly observed value in a set of data.
+     * @param col  function to get target number
+     * @param <IN> collection element number type
+     * @return result number
+     */
+    public static <IN extends Number> IN mode(Iterable<IN> col) {
+        return IteratorForMath.mode(col.iterator());
+    }
+
+    /**
+     * In statistics, the mode is the most commonly observed value in a set of data.
+     * @param arr  target
+     * @param <IN> collection element number type
+     * @return result number
+     */
+    public static <IN extends Number> IN mode(IN[] arr) {
+        return IteratorForMath.mode(arr);
     }
     //endregion
 
@@ -1436,6 +1715,239 @@ public final class CollectionHelper {
         return IteratorForMath.max(arr);
     }
     //endregion
+
+    //region variance
+
+    /**
+     * <h2>What Is Population Variance?</h2>
+     * <p>
+     * The term variance refers to a statistical measurement of the spread between numbers
+     * in a data set. More specifically, variance measures how far each number in the set
+     * is from the mean and, therefore, from every other number in the set.
+     * Variance is often depicted by this symbol: σ2. It is used by both analysts and
+     * traders to determine volatility and market security.
+     * The square root of the variance is the standard deviation (σ), which helps determine
+     * the consistency of an investment's returns over a period of time.
+     * </p><br/>
+     * <h2>Understanding Population Variance</h2>
+     * <p>
+     * In statistics, variance measures variability from the average or mean. <br/>
+     * It is calculated by taking the differences between each number in the data
+     * set and the mean, then squaring the differences to make them positive,
+     * and finally dividing the sum of the squares by the number of values in the data set.
+     * </p><br/>
+     * <p>
+     * Variance is calculated using the following formula:<br/>
+     * <img src="data:image/png;base64,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">
+     * </p><br/>
+     * <p>
+     * <ul>
+     * <li>A large variance indicates that numbers in the set are far from the mean and far from each other.</li>
+     * <li>A small variance, on the other hand, indicates the opposite.</li>
+     * <li>A variance value of zero, though, indicates that all values within a set of numbers are identical.</li>
+     * </ul>
+     * </p>
+     *
+     * @param iterator target
+     * @param fun   function to get target number
+     * @param <IN>  collection element type
+     * @param <OUT> result number type
+     * @return population variance result
+     */
+    public static <IN, OUT extends Number> OUT variance(Iterator<IN> iterator, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.variance(iterator, fun);
+    }
+
+    /**
+     * <h2>What Is Population Variance?</h2>
+     * <p>
+     * The term variance refers to a statistical measurement of the spread between numbers
+     * in a data set. More specifically, variance measures how far each number in the set
+     * is from the mean and, therefore, from every other number in the set.
+     * Variance is often depicted by this symbol: σ2. It is used by both analysts and
+     * traders to determine volatility and market security.
+     * The square root of the variance is the standard deviation (σ), which helps determine
+     * the consistency of an investment's returns over a period of time.
+     * </p><br/>
+     * <h2>Understanding Population Variance</h2>
+     * <p>
+     * In statistics, variance measures variability from the average or mean. <br/>
+     * It is calculated by taking the differences between each number in the data
+     * set and the mean, then squaring the differences to make them positive,
+     * and finally dividing the sum of the squares by the number of values in the data set.
+     * </p><br/>
+     * <p>
+     * Variance is calculated using the following formula:<br/>
+     * <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgsKCgwQDAwMDAwMEAwODxAPDgwTExQUExMcGxsbHCAgICAgICAgICD/2wBDAQcHBw0MDRgQEBgaFREVGiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD/wAARCABBAJYDAREAAhEBAxEB/8QAGwABAAMBAQEBAAAAAAAAAAAAAAQFBgcDAgj/xAA5EAAABgEDAgIGCQIHAAAAAAAAAQIDBAURBhIhBxMxQRQVIjJCUQgXI1RhcYGV1BYkVWJyc5GU0v/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABsRAQACAwEBAAAAAAAAAAAAAAABESFBUZEC/9oADAMBAAIRAxEAPwD9UgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPh55plpbzy0tstpNbjizJKUpSWTMzPgiIgEaLcVUqLHlR5bTkeWW6M6Siw4XhlHzL8gEhuRHdWtDbqFrb4cSlRGafzIvDwAegAAAIMa8qZcB6fEkokxY/cJ5bP2m1TXvpNKcq3Jx7uMgK/TmtKe/kyYkVEmPMiNsvuxZjDkZzsSd3ZdJLhF7K+2r8SMsGRAL4AAAAAAAAAAc/603XUSh0t690YTDx1xm7bRHWTecXF+Jxn2ke01gzMvMvy5Dx0s/rHVNBCvqXW8V+unN9xlfqlG4vJSFl6TwpCiNKi+YBdfWzRzqJ9u3jXddKtIsO2jIrTadbjPr2qeStDzmCR8WS4LnyASup6/SrDR2n3ea66uUosUH7rrUSM9MJlZeaVuMIyXmXACj+kLKhwKKptorKZWqKOam2pYfb7hrahlum7yLlLCY5ma1fPb8WBNrpsen2mamnpfS4jyZ827V6ys7gkklUx+QW/u4L3UYV9mjwSn9TGpxhmM5eMnX01iS6wWkb54mlqQTzTMU0L2njcgzkEe0/EskIq9o7Vy0gFLcr5VYo1KT6LNShDxbfMybW4nB+XIDnTHU7UUuJXORkRu7e6rep6lJpUeaqG4spD5lu9pe2M4efDkgjRO1tNVIresDTdYSCVf0cp2UyrKWlyq55lMd5zaRnnZJNs1YztIvkQCT0605q+pesZOpir3rCxNDsqwiOPuvPvFkva7rbSWmWkYS00kjxyecmZm0NsAAAAAyjfVXp07cN0zF/EkWbrhMtx2F94zcNWzblslJL2uPHxCCWc07bIk9TXY9bqV2XAi+mx7KPLlNOekzdyXEsRIycbEwUEZLcSRZyST3GRmT5JdCs7qnqm0OWk6PAbcPa2uS6hklK8cEazLJgIkPV+k5slEWFdwJMp3hthmUy4tR4z7KUqMz4IBbmRGWD5IwHClpV0T173U5T0t1bI+0L4Kmzc8/8AKy7j9C/08h3RKiURKSeUnyRkAotZaYVfV8Yo75RbSslNWFVLUW5KJLOcb0kZGptaFKbWWfdM8cgIbGh4UqZPubMnW7q4g+rp5NSnHWmmfNuMako2JzlXCS5PnkSltb6a09X6coodJXG76BAR2opPOKdWlsvdRvVzhJcF8iFmUWYCNZ+nerZfq/ac/sueiE4eEd7afb3Hzgt2M8CSsOeaT6Haar6TT3rEpR3dShDpvtzpP2b7jf8AdtMq3J2sOuLWakkRbhpGmptN2B6pmapuVNenuRyr62IwalNxoZOdxWVqJO915eDWeCIsEReGTg0wAAAADN9SKm8t9B3tXRL7dtMiOMxVb+3k1lg0kv4TUnJEfkJKwzuj9M2H9aMXLVQrTmnaim9TVlY4bXedU48h5xaksLcQlDfaJKcqyZmZjXWW4jUVJFlqmRq+MxLXndJbZbQ4e7k8rIiPnzEVWay0zMv4kdiLMYhqZc3qVJhMzyMtuMEh7hJ/iQCk0/04tqu5jT3raDIaYMzUy1TQ4q1ZSZcPNnvR4+QDeAOca6xrq5V07iES6hntSNZTMZJtnJOMQWz8n5BkSlH4ob58VJAdEYZaYZbYZQTbLSSQ2hPglKSwRF+RAKDU2hKXUclqTYPWDTjKO2goU+ZCTjOfaTGdaSo/xMBT/U1pL73d/vdp/IAPqa0l97u/3u0/kAKjU+humOlqv1rf291BriWhpUlVxbqSlTh4Tu2PKwRn5nwA9HOn3TlF7GolWV560lsLlx2Ct7gyUw2ZEtfcJ42yIjURcq8y+YCz+prSX3u7/e7T+QAfU1pL73d/vdp/IAT6Lprp6ks2rKHItFyGdxJTKtJ8pr2i2nlp55bZ8H5kA1YAAAAAAAAAAwPWHqjW6C0+2tclhm5tV+i1JSM9tCzwS5LxJyrssErcvBZPhPiYDL6N6x9BtL0iK5jVrUmQta5NjYOtSO9LlvHuekOn2/eWr/gsEXBAJVz9IzQkl6prNIWzFrdW1nCgoY7T+1DT76UvOHuS2XDedvPjgB1wAAAHPup9fA1Jc6Z0XNInIlm7Mmz2c8nHiRVoLj/fktn+glX4t16z3QuRaW1jOkW6VFYaUgsaTfWr45MN11chwvnvR2DyNXcX1mqxx2IRQAAAAAAAAAAAABFm1VXONJzYbEo0Z2G82hzGfHG4jwAjf0vpr/CYX/Xa/wDID7Z07p9l1DrNZEbdbPchxDDaVJMvAyMiyQCwAAABFcqqtywasnIbC7FhJtszVNoN5CFeKUuY3ER58CMB6sRIkdTqmGUMqfX3XzQkk73DIiNa8e8rBEWTAeoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9k=">
+     * </p><br/>
+     * <p>
+     * <ul>
+     * <li>A large variance indicates that numbers in the set are far from the mean and far from each other.</li>
+     * <li>A small variance, on the other hand, indicates the opposite.</li>
+     * <li>A variance value of zero, though, indicates that all values within a set of numbers are identical.</li>
+     * </ul>
+     * </p>
+     * @param col   target
+     * @param fun   function to get target number
+     * @param <IN>  collection element type
+     * @param <OUT> result number type
+     * @return population variance result
+     */
+    public static <IN, OUT extends Number> OUT variance(Iterable<IN> col, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.variance(col.iterator(), fun);
+    }
+
+    /**
+     * <h2>What Is Population Variance?</h2>
+     * <p>
+     * The term variance refers to a statistical measurement of the spread between numbers
+     * in a data set. More specifically, variance measures how far each number in the set
+     * is from the mean and, therefore, from every other number in the set.
+     * Variance is often depicted by this symbol: σ2. It is used by both analysts and
+     * traders to determine volatility and market security.
+     * The square root of the variance is the standard deviation (σ), which helps determine
+     * the consistency of an investment's returns over a period of time.
+     * </p><br/>
+     * <h2>Understanding Population Variance</h2>
+     * <p>
+     * In statistics, variance measures variability from the average or mean. <br/>
+     * It is calculated by taking the differences between each number in the data
+     * set and the mean, then squaring the differences to make them positive,
+     * and finally dividing the sum of the squares by the number of values in the data set.
+     * </p><br/>
+     * <p>
+     * Variance is calculated using the following formula:<br/>
+     * <img src="data:image/png;base64,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">
+     * </p><br/>
+     * <p>
+     * <ul>
+     * <li>A large variance indicates that numbers in the set are far from the mean and far from each other.</li>
+     * <li>A small variance, on the other hand, indicates the opposite.</li>
+     * <li>A variance value of zero, though, indicates that all values within a set of numbers are identical.</li>
+     * </ul>
+     * </p>
+     * @param arr   target
+     * @param fun   function to get target number
+     * @param <IN>  collection element type
+     * @param <OUT> result number type
+     * @return population variance result
+     */
+    public static <IN, OUT extends Number> OUT variance(IN[] arr, FunctionMount<IN, OUT> fun) {
+        return IteratorForMath.variance(arr, fun);
+    }
+
+    /**
+     * <h2>What Is Population Variance?</h2>
+     * <p>
+     * The term variance refers to a statistical measurement of the spread between numbers
+     * in a data set. More specifically, variance measures how far each number in the set
+     * is from the mean and, therefore, from every other number in the set.
+     * Variance is often depicted by this symbol: σ2. It is used by both analysts and
+     * traders to determine volatility and market security.
+     * The square root of the variance is the standard deviation (σ), which helps determine
+     * the consistency of an investment's returns over a period of time.
+     * </p><br/>
+     * <h2>Understanding Population Variance</h2>
+     * <p>
+     * In statistics, variance measures variability from the average or mean. <br/>
+     * It is calculated by taking the differences between each number in the data
+     * set and the mean, then squaring the differences to make them positive,
+     * and finally dividing the sum of the squares by the number of values in the data set.
+     * </p><br/>
+     * <p>
+     * Variance is calculated using the following formula:<br/>
+     * <img src="data:image/png;base64,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">
+     * </p><br/>
+     * <p>
+     * <ul>
+     * <li>A large variance indicates that numbers in the set are far from the mean and far from each other.</li>
+     * <li>A small variance, on the other hand, indicates the opposite.</li>
+     * <li>A variance value of zero, though, indicates that all values within a set of numbers are identical.</li>
+     * </ul>
+     * </p>
+     * @param iterator target
+     * @param <IN>     collection element number type
+     * @return population variance result
+     */
+    public static <IN extends Number> IN variance(Iterator<IN> iterator) {
+        return IteratorForMath.variance(iterator);
+    }
+
+    /**
+     * <h2>What Is Population Variance?</h2>
+     * <p>
+     * The term variance refers to a statistical measurement of the spread between numbers
+     * in a data set. More specifically, variance measures how far each number in the set
+     * is from the mean and, therefore, from every other number in the set.
+     * Variance is often depicted by this symbol: σ2. It is used by both analysts and
+     * traders to determine volatility and market security.
+     * The square root of the variance is the standard deviation (σ), which helps determine
+     * the consistency of an investment's returns over a period of time.
+     * </p><br/>
+     * <h2>Understanding Population Variance</h2>
+     * <p>
+     * In statistics, variance measures variability from the average or mean. <br/>
+     * It is calculated by taking the differences between each number in the data
+     * set and the mean, then squaring the differences to make them positive,
+     * and finally dividing the sum of the squares by the number of values in the data set.
+     * </p><br/>
+     * <p>
+     * Variance is calculated using the following formula:<br/>
+     * <img src="data:image/png;base64,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">
+     * </p><br/>
+     * <p>
+     * <ul>
+     * <li>A large variance indicates that numbers in the set are far from the mean and far from each other.</li>
+     * <li>A small variance, on the other hand, indicates the opposite.</li>
+     * <li>A variance value of zero, though, indicates that all values within a set of numbers are identical.</li>
+     * </ul>
+     * </p>
+     * @param col  function to get target number
+     * @param <IN> collection element number type
+     * @return population variance result
+     */
+    public static <IN extends Number> IN variance(Iterable<IN> col) {
+        return IteratorForMath.variance(col.iterator());
+    }
+
+    /**
+     * <h2>What Is Population Variance?</h2>
+     * <p>
+     * The term variance refers to a statistical measurement of the spread between numbers
+     * in a data set. More specifically, variance measures how far each number in the set
+     * is from the mean and, therefore, from every other number in the set.
+     * Variance is often depicted by this symbol: σ2. It is used by both analysts and
+     * traders to determine volatility and market security.
+     * The square root of the variance is the standard deviation (σ), which helps determine
+     * the consistency of an investment's returns over a period of time.
+     * </p><br/>
+     * <h2>Understanding Population Variance</h2>
+     * <p>
+     * In statistics, variance measures variability from the average or mean. <br/>
+     * It is calculated by taking the differences between each number in the data
+     * set and the mean, then squaring the differences to make them positive,
+     * and finally dividing the sum of the squares by the number of values in the data set.
+     * </p><br/>
+     * <p>
+     * Variance is calculated using the following formula:<br/>
+     * <img src="data:image/png;base64,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">
+     * </p><br/>
+     * <p>
+     * <ul>
+     * <li>A large variance indicates that numbers in the set are far from the mean and far from each other.</li>
+     * <li>A small variance, on the other hand, indicates the opposite.</li>
+     * <li>A variance value of zero, though, indicates that all values within a set of numbers are identical.</li>
+     * </ul>
+     * </p>
+     * @param arr  target
+     * @param <IN> collection element number type
+     * @return population variance result
+     */
+    public static <IN extends Number> IN variance(IN[] arr) {
+        return IteratorForMath.variance(arr);
+    }
+    //endregion
+
     //endregion
 
     //region distinct
@@ -1692,9 +2204,51 @@ public final class CollectionHelper {
      * @param <I>      element type
      * @return new iterable result with taked elements.
      */
-
     public static <I> IterableResult<I> take(final Iterator<I> iterator, int count) {
         return IterableResultFactory.getInstanceForTake(() -> iterator, count);
+    }
+    //endregion
+
+    //region sort
+
+    /**
+     * Sort all elements in iterable as ascendant mode (from smallest to biggest).
+     * @param set target iterable.
+     * @param <I> element type.
+     * @return new iterable result sorted.
+     */
+    public static <I> IterableResult<I> asc(Iterable<I> set) {
+        return IterableResultFactory.getInstanceForSortAsc(set::iterator);
+    }
+
+    /**
+     * Sort all elements in iterator as ascendant mode (from smallest to biggest).
+     * @param iterator target iterator.
+     * @param <I> element type.
+     * @return new iterable result sorted.
+     */
+    public static <I> IterableResult<I> asc(Iterator<I> iterator) {
+        return IterableResultFactory.getInstanceForSortAsc(iterator);
+    }
+
+    /**
+     * Sort all elements in iterable as descendant mode (from biggest to smallest).
+     * @param set target iterable.
+     * @param <I> element type.
+     * @return new iterable result sorted.
+     */
+    public static <I> IterableResult<I> desc(Iterable<I> set) {
+        return IterableResultFactory.getInstanceForSortDesc(set::iterator);
+    }
+
+    /**
+     * Sort all elements in iterator as descendant mode (from biggest to smallest).
+     * @param iterator target iterator.
+     * @param <I> element type.
+     * @return new iterable result sorted.
+     */
+    public static <I> IterableResult<I> desc(Iterator<I> iterator) {
+        return IterableResultFactory.getInstanceForSortDesc(iterator);
     }
     //endregion
 

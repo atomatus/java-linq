@@ -131,4 +131,18 @@ public class CollectionHelperTest extends TestCase {
         assertEquals(0.014285708f, pv);
     }
 
+    public void testSampleVariance() {
+        Float pv = CollectionHelper.varianceSample(new Float[]{3.2f, 3.3f, 3.4f, 3.4f, 3.6f, 3.5f, 3.4f});
+        assertEquals(0.01666666f, pv);
+    }
+
+    public void testPopulationStandardDeviation() {
+        Float pv = CollectionHelper.standardDeviation(new Float[]{3.2f, 3.3f, 3.4f, 3.4f, 3.6f, 3.5f, 3.4f});
+        assertEquals(0.11952283f, pv);
+    }
+
+    public void testSampleStandardDeviation() {
+        Float pv = CollectionHelper.standardDeviationSample(new Float[]{3.2f, 3.3f, 3.4f, 3.4f, 3.6f, 3.5f, 3.4f});
+        assertEquals(0.12909941f, pv);
+    }
 }

@@ -88,8 +88,8 @@ jobs:
         body: |
           Changes in this Release
           ${{ steps.step_file_changes.outputs.files }}
-        draft: ${{ steps.step_curr_ver.outputs.CURRENT_VERSION_INT < 10 }}
-        prerelease: ${{ steps.step_curr_ver.outputs.CURRENT_VERSION_INT < 10 || steps.step_lat_ver.outputs.LATEST_VERSION_INT < 1 }}
+#        draft: ${{ steps.step_curr_ver.outputs.CURRENT_VERSION_INT < 10 }}
+        prerelease: ${{ steps.step_curr_ver.outputs.CURRENT_VERSION_INT < 10 }}
           
     - name: Publish with Gradle
       if: ${{ success() && (steps.step_curr_ver.outputs.CURRENT_VERSION_INT > steps.step_lat_ver.outputs.LATEST_VERSION_INT) }}

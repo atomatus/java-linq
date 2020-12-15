@@ -60,6 +60,50 @@ public abstract class IterableResult<E> implements Iterable<E> {
     }
 
     /**
+     * Try recover first element of collection that accept condition.
+     * @param where condition
+     * @return first element on condition.
+     */
+    public E first(CollectionHelper.CompareEntryValid<E> where) {
+        return CollectionHelper.first(this, where);
+    }
+
+    /**
+     * Try recover first element of collection.
+     * @return first element.
+     */
+    public E first() {
+        return CollectionHelper.first(this, e -> true);
+    }
+
+    /**
+     * Try recover last element of collection that accept condition.
+     * @param where condition
+     * @return last element on condition.
+     */
+    public E last(CollectionHelper.CompareEntryValid<E> where) {
+        return CollectionHelper.last(this, where);
+    }
+
+    /**
+     * Try recover last element of collection.
+     * @return last element.
+     */
+    public E last() {
+        return CollectionHelper.last(this, e -> true);
+    }
+
+    /**
+     * Filter collection to get only element that are instance of find class.
+     * @param clazz find class type
+     * @param <J> find class type
+     * @return collection result filtered only for find class type.
+     */
+    public <J> IterableResult<J> instanceOf(Class<J> clazz) {
+        return CollectionHelper.instanceOf(this, clazz);
+    }
+
+    /**
      * Filter current iterable result recovering only non null elements.
      *
      * @return a new iterable result within elements filtered by non null condition.

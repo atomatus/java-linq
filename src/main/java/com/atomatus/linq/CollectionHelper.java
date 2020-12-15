@@ -709,6 +709,153 @@ public final class CollectionHelper {
     }
     //endregion
 
+    //region first
+    /**
+     * Try recover first element of collection that accept condition.
+     * @param iterator target
+     * @param where condition
+     * @param <I> target type
+     * @return first element on condition.
+     */
+    public static <I> I first(Iterator<I> iterator, CompareEntryValid<I> where) {
+        IterableResult<I> ir = filter(iterator, where);
+        for (I i : ir) return i;
+        return null;
+    }
+
+    /**
+     * Try recover first element of collection that accept condition.
+     * @param col target
+     * @param where condition
+     * @param <I> target type
+     * @return first element on condition.
+     */
+    public static <I> I first(Iterable<I> col, CompareEntryValid<I> where) {
+        IterableResult<I> ir = filter(col, where);
+        for (I i : ir) return i;
+        return null;
+    }
+
+    /**
+     * Try recover first element of collection that accept condition.
+     * @param arr target
+     * @param where condition
+     * @param <I> target type
+     * @return first element on condition.
+     */
+    public static <I> I first(I[] arr, CompareEntryValid<I> where) {
+        IterableResult<I> ir = filter(arr, where);
+        for (I i : ir) return i;
+        return null;
+    }
+    //endregion
+
+    //region last
+    /**
+     * Try recover last element of collection that accept condition.
+     * @param iterator target
+     * @param where condition
+     * @param <I> target type
+     * @return last element on condition.
+     */
+    public static <I> I last(Iterator<I> iterator, CompareEntryValid<I> where) {
+        Objects.requireNonNull(iterator);
+        Objects.requireNonNull(where);
+        I last = null;
+        while(iterator.hasNext()) {
+            I aux = iterator.next();
+            if(where.isValid(aux)) last = aux;
+        }
+        return last;
+    }
+
+    /**
+     * Try recover last element of collection that accept condition.
+     * @param col target
+     * @param where condition
+     * @param <I> target type
+     * @return last element on condition.
+     */
+    @SuppressWarnings("unchecked")
+    public static <I> I last(Iterable<I> col, CompareEntryValid<I> where) {
+        if(col instanceof List<?>) {
+            List<?> l = (List<?>) col;
+            for(int i = l.size() - 1; i >= 0; i--) {
+                I aux = (I) l.get(i);
+                if(where.isValid(aux)) {
+                    return aux;
+                }
+            }
+            return null;
+        }
+
+        return last(col.iterator(), where);
+    }
+
+    /**
+     * Try recover last element of collection that accept condition.
+     * @param arr target
+     * @param where condition
+     * @param <I> target type
+     * @return last element on condition.
+     */
+    public static <I> I last(I[] arr, CompareEntryValid<I> where) {
+        Objects.requireNonNull(arr);
+        Objects.requireNonNull(where);
+        for(int i = arr.length - 1; i >= 0; i--) {
+            I aux = arr[i];
+            if(where.isValid(aux)) {
+                return aux;
+            }
+        }
+        return null;
+    }
+    //endregion
+
+    //region instanceOf
+    /**
+     * Filter collection to get only element that are instance of find class.
+     * @param iterator target collection
+     * @param clazz find class type
+     * @param <I> collection element type
+     * @param <J> find class type
+     * @return collection result filtered only for find class type.
+     */
+    @SuppressWarnings("unchecked")
+    public static <I, J> IterableResult<J> instanceOf(Iterator<I> iterator, Class<J> clazz) {
+        Objects.requireNonNull(clazz);
+        return filter(iterator, i -> i != null && i.getClass().isAssignableFrom(clazz)).select(i -> (J) i);
+    }
+
+    /**
+     * Filter collection to get only element that are instance of find class.
+     * @param col target collection
+     * @param clazz find class type
+     * @param <I> collection element type
+     * @param <J> find class type
+     * @return collection result filtered only for find class type.
+     */
+    @SuppressWarnings("unchecked")
+    public static <I, J> IterableResult<J> instanceOf(Iterable<I> col, Class<J> clazz) {
+        Objects.requireNonNull(clazz);
+        return filter(col, i -> i != null && i.getClass().isAssignableFrom(clazz)).select(i -> (J) i);
+    }
+
+    /**
+     * Filter collection to get only element that are instance of find class.
+     * @param arr target collection
+     * @param clazz find class type
+     * @param <I> collection element type
+     * @param <J> find class type
+     * @return collection result filtered only for find class type.
+     */
+    @SuppressWarnings("unchecked")
+    public static <I, J> IterableResult<J> instanceOf(I[] arr, Class<J> clazz) {
+        Objects.requireNonNull(clazz);
+        return filter(arr, i -> i != null && i.getClass().isAssignableFrom(clazz)).select(i -> (J) i);
+    }
+    //endregion
+
     //region nonNull
 
     /**

@@ -474,8 +474,8 @@ abstract class AnalyzerForSepChar extends Analyzer {
         }
 
         /**
-         * A mean is a mathematical term, that describes the average of a sample.<br/>
-         * In Statistics, the definition of the mean is similar to the average.<br/>
+         * A mean is a mathematical term, that describes the average of a sample.<br>
+         * In Statistics, the definition of the mean is similar to the average.<br>
          * But, it can also be defined as the sum of the smallest value and the largest value in the given data set divided by 2.
          *
          * @param resultClass number type class.
@@ -487,8 +487,8 @@ abstract class AnalyzerForSepChar extends Analyzer {
         }
 
         /**
-         * A mean is a mathematical term, that describes the average of a sample.<br/>
-         * In Statistics, the definition of the mean is similar to the average.<br/>
+         * A mean is a mathematical term, that describes the average of a sample.<br>
+         * In Statistics, the definition of the mean is similar to the average.<br>
          * But, it can also be defined as the sum of the smallest value and the largest value in the given data set divided by 2.
          *
          * @param mountFun function to get target number

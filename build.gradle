@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.atomatus'
-version '1.1.0'
+version '1.1.1'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -24,6 +24,11 @@ repositories {
             password = System.getenv("TOKEN") ?: System.getenv("GITHUB_TOKEN")
         }
     }
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
 }
 
 publishing {

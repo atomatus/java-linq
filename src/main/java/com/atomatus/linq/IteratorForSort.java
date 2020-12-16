@@ -8,11 +8,11 @@ import java.util.Objects;
 
 /**
  * <p>Sort collection values using ASC/DESC mode.</p>
- * <br/>
+ * <br>
  * <p>
  * <h3>{@link SortMode}:</h3>
  * Specifies that the values in the specified collection should be sorted in
- * ascending or descending order.<br/>
+ * ascending or descending order.<br>
  * <ul>
  *     <li>{@link SortMode#ASC} sorts from the lowest value to highest value.</li>
  *     <li>{@link SortMode#DESC} sorts from highest value to lowest value.</li>

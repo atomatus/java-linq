@@ -187,7 +187,7 @@ System.out.println(CollectionHelper.all(arr1, e -> e % 2 == 0));
 
 ``All (values pair in arr1): false``
 
-## 🔍 Analyzer
+## 🔍 🧠 Analyzer
 <p>
 Last but not least, Analyzer. This class can be used to load spreadsheets files (from local system disk or using https://, http:// or file:// protocol), how like, CSV to 
 analyze and manipulate data. Generating IterableResult, IterableResultGroup, IterableResultMap.

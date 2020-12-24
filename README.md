@@ -1,28 +1,28 @@
-# Java Collection Linq and Analyzer Project
+# ☕ Java Collection Linq and Analyzer Project 
 <p>
-A library to help developer manipulate iterables collections or arrays, 
+A library 📦 to help developer manipulate iterables collections or arrays, 
 how like, linq principle to select, find, filter, group and manipulate elements 
 on these set. You can generate map groups to help data analyses, 
 checking elements by conditions on set, filtering data or applying simple math 
-operations.
+operations. 💻📱
 </p>
 
-## Iterable Result
+## Iterable Result ⛓
 All request generates a type of iterable result, each iterable result is not result of execution operation in time, 
 but a scheduled of execution that's will be applied only when iterator is request, forced by method iterator(), or 
 iteration in a loop.
 
-### IterableResult
+### IterableResult ⛓
 Simple iterable result contained methods to schedule new manipulate action on future elements result.
 
-### IterableResultGroup
+### IterableResultGroup ⛓ 🪞
 Iterable result for elements grouped, each group contains the proposed key and set of elements how values of each key. 
 
-### IterableResultMap
+### IterableResultMap ⛓
 Iterable result map that is base class of iterableResultGroup, contains methods
 to filter and manipulate like a dictionary.
 
-### CollectionHelper
+### CollectionHelper ⛓ 👊
 <p>
 Set of static methods to help for query actions (from any iterable, set or array) to
 manipulate, filter, find, group elements on set or array fastest way for reducing code.

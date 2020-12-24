@@ -9,7 +9,7 @@ operations. 💻📱
 
 ## ⛓ Iterable Result
 All request generates a type of iterable result, each iterable result is not result of execution operation in time, 
-but a scheduled of execution that's will be applied only when iterator is request, forced by method iterator(), or 
+but a schedule of execution that's will be applied only when iterator is request, forced by method iterator(), or 
 iteration in a loop.
 
 ### ⛓ IterableResult

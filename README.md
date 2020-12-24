@@ -15,7 +15,7 @@ iteration in a loop.
 ### IterableResult ⛓
 Simple iterable result contained methods to schedule new manipulate action on future elements result.
 
-### IterableResultGroup ⛓ &#129694;
+### IterableResultGroup ⛓
 Iterable result for elements grouped, each group contains the proposed key and set of elements how values of each key. 
 
 ### IterableResultMap ⛓

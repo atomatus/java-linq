@@ -57,6 +57,7 @@ gradle-app.setting
 .idea/modules.xml
 .idea/misc.xml
 .idea/java-linq.iml
+.idea/libraries-with-intellij-classes.xml
 
 
 # Gradle:

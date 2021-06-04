@@ -54,5 +54,5 @@ publishing {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    implementation 'com.atomatus:java-util:1.2.3'
+    implementation 'com.atomatus:java-util:1.2.7'
 }

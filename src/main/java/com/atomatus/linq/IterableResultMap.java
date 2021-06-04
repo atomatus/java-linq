@@ -28,6 +28,8 @@ public abstract class IterableResultMap<K, V> implements Iterable<Map.Entry<K, V
 
         Set<Map.Entry<K, V>> toSet();
 
+        Object[][] toTable();
+
         V get(K key);
 
         Map.Entry<K, V> minEntry();
@@ -119,6 +121,14 @@ public abstract class IterableResultMap<K, V> implements Iterable<Map.Entry<K, V
      */
     public Set<Map.Entry<K, V>> toSet() {
         return getIterator().toSet();
+    }
+
+    /**
+     * Generate a matrix table representation.
+     * @return instance of matrix within all data set in table format.
+     */
+    public Object[][] toTable() {
+        return getIterator().toTable();
     }
 
     /**

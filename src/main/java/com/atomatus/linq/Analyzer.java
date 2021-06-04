@@ -1,5 +1,7 @@
 package com.atomatus.linq;
 
+import com.atomatus.util.TextTable;
+
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,6 +16,8 @@ import java.util.Objects;
 public abstract class Analyzer extends IterableResultGroup<String, String> implements Closeable {
 
     protected static final char EMPTY_SEPARATOR_CHAR;
+    protected static final int PRINT_HEAD_ROWS_COUNT;
+    protected static final int PRINT_CELL_MAX_WIDTH;
 
     private String filename;
     private Charset charset;
@@ -85,6 +89,8 @@ public abstract class Analyzer extends IterableResultGroup<String, String> imple
 
     static {
         EMPTY_SEPARATOR_CHAR = '\0';
+        PRINT_HEAD_ROWS_COUNT = 5;
+        PRINT_CELL_MAX_WIDTH = 35;
     }
 
     protected Analyzer(String filename, char separatorChar, boolean requestSeparatorChar) {
@@ -154,6 +160,26 @@ public abstract class Analyzer extends IterableResultGroup<String, String> imple
             }
         }
         return true;
+    }
+    //endregion
+
+    //region Operations for Data analytics
+
+    /**
+     * Print first lines of data set.
+     */
+    public void head() {
+        try (TextTable tt = new TextTable
+                .Builder()
+                .alignRight()
+                .lineSeparator()
+                .label()
+                .maxWidth(PRINT_CELL_MAX_WIDTH)
+                .noWrap()
+                .from(this.amount(PRINT_HEAD_ROWS_COUNT).toTable())
+                .build()) {
+            tt.print();
+        }
     }
     //endregion
 

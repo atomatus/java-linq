@@ -27,7 +27,7 @@ final class IteratorForFilterAsClassType<I, E, C, S extends Collection<? extends
     private void checkInitList(){
         if(iterator == null){
             synchronized (classType) {
-                //creating a new list to avoid concorrence.
+                //creating a new list to avoid concurrence.
                 S set = getCollection.get();
                 Objects.requireNonNull(set);
                 iterator = new ArrayList<>(set).iterator();

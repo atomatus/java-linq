@@ -225,4 +225,11 @@ final class IteratorForGroup<K, V> extends IteratorForMap<K, IterableResult<V>> 
     public IterableResultGroup<K, V> amount(int count) {
         return calculator.amount(count);
     }
+
+    @Override
+    public Object[][] toTable() {
+        return IteratorFor2DMatrixFactory
+                .getInstanceForEntrySet(this.toSet())
+                .toMatrix();
+    }
 }

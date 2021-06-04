@@ -254,6 +254,13 @@ abstract class IteratorForMap<K, V> implements IterableResultMap.IteratorMap<K, 
     }
 
     @Override
+    public Object[][] toTable() {
+        return IteratorFor2DMatrixFactory
+                .getInstanceForMap(this.toMap())
+                .toMatrix();
+    }
+
+    @Override
     public V get(K key) {
         return getResult().get(key);
     }

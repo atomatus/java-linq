@@ -145,27 +145,6 @@ final class IterableMapForFunctionGet<K, V> implements IterableMap<K, IterableRe
         }
     }
 
-    private interface Comparer {
-
-    }
-
-    private static class Counter {
-        int limit;
-        int count;
-
-        Counter(int limit){
-            this.limit = limit;
-        }
-
-        boolean count(){
-            return limit != NO_LIMIT && ++count >= limit;
-        }
-
-        void reset(){
-            this.count = 0;
-        }
-    }
-
     static final int NO_LIMIT;
 
     private transient Map<K, IterableResult<V>> map;

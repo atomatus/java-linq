@@ -1,8 +1,8 @@
 package com.atomatus.linq;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.*;
 
 /**
@@ -187,11 +187,12 @@ abstract class AnalyzerForSepChar extends Analyzer {
             return isLocalFile() ? initReaderForLocal() : initReaderForUrl();
         }
 
-        private BufferedReader initReaderForUrl(){
+        private BufferedReader initReaderForUrl() {
             try {
                 String charset = getCharset().name();
-                URLConnection connection = new URL(getFilename()).openConnection();
+                HttpURLConnection connection = (HttpURLConnection) new URL(getFilename()).openConnection();
                 connection.setRequestProperty("Accept-Charset", charset);
+                connection.connect();
                 InputStream response = connection.getInputStream();
                 return new BufferedReader(new InputStreamReader(response, charset));
             } catch (IOException e) {
@@ -381,6 +382,13 @@ abstract class AnalyzerForSepChar extends Analyzer {
             synchronized (lock){
                 return getOneShotIterableNotLockedResettable().toSet();
             }
+        }
+
+        @Override
+        public Object[][] toTable() {
+            return IteratorFor2DMatrixFactory
+                    .getInstanceForEntrySet(this.toSet())
+                    .toMatrix();
         }
 
         @Override

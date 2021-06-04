@@ -54,6 +54,10 @@ gradle-app.setting
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/java-linq.iml
+
 
 # Gradle:
 .idea/gradle.xml

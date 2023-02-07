@@ -1,3 +1,5 @@
+![build](https://github.com/atomatus/java-linq/actions/workflows/gradle-ci.yml/badge.svg)
+
 # ☕ Java Collection Linq and Analyzer Project 
 <p>
 A library 📦 to help developer manipulate iterables collections or arrays, 

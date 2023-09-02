@@ -34,13 +34,13 @@ Every query action result generate an IterableResult, IterableResultGroup or Ite
 all thus are tree schedules Iterator actions that will be mounted and executed only when do a directed request it.
 </p>
 
-```
+```java
 //Samples
 Integer[] arr0 = new Integer[]{0, 2, 4, 6, 8};
 Integer[] arr1 = new Integer[]{2, 3, 5, 7, 9};
 ```
 
-```
+```java
 System.out.println("\nMerge:");
 IterableResult<Integer> result = CollectionHelper.merge(arr0, arr1);
 result.foreach(System.out::println);
@@ -59,7 +59,7 @@ Merge:
 9
 ``
 
-```
+```java
 System.out.println("\nDistinct:");
 result = result.distinct();
 result.foreach(System.out::println);
@@ -77,7 +77,7 @@ Distinct:
 9
 ``
 
-```
+```java
 System.out.println("\nIntersection:");
 CollectionHelper
     .intersection(arr0, arr1)
@@ -88,7 +88,7 @@ Intersection:
 2
 ``
 
-```
+```java
 IterableResultGroup<Integer, Integer> group = result.groupBy(e -> e % 2);
 System.out.println("\nGroup by (grouping values pair and odd):");
 group.foreach(System.out::println);
@@ -100,7 +100,7 @@ group.foreach(System.out::println);
 
 ``1=[3, 5, 7, 9]``
 
-```
+```java
 System.out.println("\nGroup size (count of values in each group):");
 group.size().foreach(System.out::println);
 ```
@@ -112,7 +112,7 @@ group.size().foreach(System.out::println);
 ``1=4``
 
 
-```
+```java
 System.out.println("\nGroup sum (sum of all values in each group - needs explicit set of Number class type or Function to sum operation):");
 group.sum(Integer.class).foreach(System.out::println);
 ```
@@ -124,7 +124,7 @@ group.sum(Integer.class).foreach(System.out::println);
 ``1=24``
 
 
-```
+```java
 Integer i = CollectionHelper.sum(arr0);
 System.out.printf("\nSum (all values in arr0):\n%d\n", i);
 
@@ -136,7 +136,7 @@ System.out.printf("\nSum (all values in arr1):\n%d\n", i);
 
 ``Sum (all values in arr1): 26``
 
-```
+```java
 i = CollectionHelper.min(arr0);
 System.out.printf("\nMin (all values in arr0):\n%d\n", i);
 
@@ -148,7 +148,7 @@ System.out.printf("\nMin (all values in arr1):\n%d\n", i);
  
 ``Min (all values in arr1): 2``
 
-```
+```java
 i = CollectionHelper.max(arr0);
 System.out.printf("\Max (all values in arr0):\n%d\n", i);
 
@@ -160,7 +160,7 @@ System.out.printf("\Max (all values in arr1):\n%d\n", i);
 
 ``Max (all values in arr1): 9``
 
-```
+```java
 i = CollectionHelper.mean(arr0);
 System.out.printf("\Mean (all values in arr0):\n%d\n", i);
 
@@ -172,7 +172,7 @@ System.out.printf("\Mean (all values in arr1):\n%d\n", i);
 
 ``Mean (all values in arr1): 5``
 
-```
+```java
 System.out.println("\nAny (value equals 2):");
 System.out.println(CollectionHelper.any(arr0, e -> e == 2));
 
@@ -195,7 +195,7 @@ Last but not least, Analyzer. This class can be used to load spreadsheets files 
 analyze and manipulate data. Generating IterableResult, IterableResultGroup, IterableResultMap.
 </p>
 
-```
+```java
 //Example, analyzing how many patients have obesity.
 //obs.: real data of patients with respiratory conditions between years 2018 and 2019 in Brazil.
 try(Analyzer a = Analyzer.load("https://raw.githubusercontent.com/chcmatos/nanodegree_py_analyze_srag/main/doc/influd18_limpo-final.csv")) {
@@ -204,3 +204,7 @@ try(Analyzer a = Analyzer.load("https://raw.githubusercontent.com/chcmatos/nanod
 ```
 
 ``Were found 1466 patients having obesity.``
+
+---
+
+© Atomatus All Rights Reserveds.
